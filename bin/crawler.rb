@@ -31,7 +31,7 @@ options = {
   :verbose => true,
   :discard_page_bodies => true,
   :allow_hosts => ["headlines.yahoo.co.jp"],
-  :recrawl_interval => 60
+  :recrawl_interval => 24*3600
 }
 
 Anemone.crawl(BASE_URL, options) do |anemone|
