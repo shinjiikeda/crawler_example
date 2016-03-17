@@ -48,8 +48,14 @@ AnemoneKai.crawl(BASE_URL, options) do |anemone|
   anemone.on_every_page do |page|
     next if ! page.url.to_s.start_with?("http://headlines.yahoo.co.jp/hl?a=")
     if page.doc
-      encoding = page.doc.encoding
-      puts [page.url.to_s, page.body.encode("UTF-8", encoding)].to_json
+      title = page.doc.title
+      desc = nil
+      page.doc.search("meta").each do | node |
+        if node["property"] == "og:description"
+          desc = node["content"]
+        end
+      end
+      puts [page.url.to_s, title, desc ].to_json
     end
   end
   
