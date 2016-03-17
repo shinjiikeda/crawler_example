@@ -23,7 +23,7 @@ else
 end
 
 options = {
-  :user_agent => "SupershipCrawler/0.0.1",
+  :user_agent => "NewsCrawler/0.0.1",
   :storage => Anemone::Storage::SQLite3(file = DB_FILE),
   :delay => 0.5,
   :depth_limit => 3,
