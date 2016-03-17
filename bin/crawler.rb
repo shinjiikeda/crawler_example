@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # encoding: UTF-8
 
 require 'rubygems'
@@ -24,7 +25,7 @@ end
 
 options = {
   :user_agent => "NewsCrawler/0.0.1",
-  :storage => Anemone::Storage::SQLite3(file = DB_FILE),
+  :storage => AnemoneKai::Storage::SQLite3(file = DB_FILE),
   :delay => 0.5,
   :depth_limit => 3,
   :read_timeout => 30,
@@ -34,7 +35,7 @@ options = {
   :recrawl_interval => 24*3600
 }
 
-Anemone.crawl(BASE_URL, options) do |anemone|
+AnemoneKai.crawl(BASE_URL, options) do |anemone|
   
   anemone.focus_crawl do |page|
     page.links.keep_if do |link|
